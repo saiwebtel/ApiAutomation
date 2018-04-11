@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+    <line>
+      <![CDATA[Data stored in Comic Database for TVID037554395]]>
+    </line>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="838" started-at="2018-04-11T15:09:05Z" finished-at="2018-04-11T15:09:06Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="838" started-at="2018-04-11T15:09:05Z" finished-at="2018-04-11T15:09:06Z">
+      <class name="test.testCusService">
+        <test-method status="PASS" signature="createURLForCusHttpRequest()[pri:0, instance:test.testCusService@458ad742]" name="createURLForCusHttpRequest" is-config="true" duration-ms="466" started-at="2018-04-11T15:09:05Z" finished-at="2018-04-11T15:09:06Z">
+        </test-method> <!-- createURLForCusHttpRequest -->
+        <test-method status="PASS" signature="VerifyCUS_With_Tvta_Optin(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:test.testCusService@458ad742]" name="VerifyCUS_With_Tvta_Optin" duration-ms="359" started-at="2018-04-11T15:09:06Z" description="This Test Verifies the CUS call with TVTA-OPTIN" data-provider="sendDataForCusAPI_Tvta_optin" finished-at="2018-04-11T15:09:06Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[TVTA]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[OPTIN]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Automation]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Script]]>
+              </value>
+            </param>
+          </params>
+        </test-method> <!-- VerifyCUS_With_Tvta_Optin -->
+      </class> <!-- test.testCusService -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
