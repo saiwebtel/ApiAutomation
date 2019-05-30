@@ -3,6 +3,7 @@ package test;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import junit.framework.Assert;
 import model.Consents;
@@ -31,7 +32,8 @@ public class testCusService
 	    String FinalURL;
 	    HttpPut httpput;
 	    String stvid;
-	    //testCusService testcs=new testCusService();
+	    List<String> dataFromComic;
+
   @BeforeMethod
   public void createURLForCusHttpRequest() throws SQLException, IOException
 	{
@@ -41,12 +43,7 @@ public class testCusService
 		String port=Testbase.Repository.getProperty("comic_port");
 		String base=Testbase.Repository.getProperty("BASE_FOR_COMIC");
 		stvid=testbase.getTvidFromUUSD();
-		//System.out.println(stvid);
 		FinalURL="http://" + ip +":"+ port + base + stvid ;
-
-		//System.out.println(FinalURL);
-		//return FinalURL;
-		
 	}
 
 	@DataProvider()
@@ -74,7 +71,7 @@ public class testCusService
 		//httpput.addHeader("Content-Type","application/json");
 		ObjectMapper objectmapper=new ObjectMapper();
 		//object to json file
-		objectmapper.writeValue(new File("C:/Users/vinay.singh/workspace/ApiAutomation/src/resources/consents.json"),consents);
+		objectmapper.writeValue(new File("C:/Users/vinay.singh.IND-DEL/APIAUTOMATION_PROJECT/ApiAutomation/src/resources/consents.json"),consents);
 		
 		String userJsonstring=objectmapper.writeValueAsString(consents);
 		/*System.out.println(userJsonstring);
@@ -83,49 +80,21 @@ public class testCusService
 	  
 		int statusCode=httpresponse.getStatusLine().getStatusCode();
 		Assert.assertEquals(testbase.RESPONSE_STATUS_CODE_200, statusCode);
-		Reporter.log("Data stored in Comic Database for TVID"+stvid);
+		//Reporter.log("Data stored in Comic Database for TVID"+stvid);
+		dataFromComic=testbase.getDataFromComicdatabase();
+		System.out.println("Data stored in Comic Database for TVID===> "+stvid);
+		System.out.println("Data stored in Comic Database for TVID===> "+dataFromComic);
+		Assert.assertEquals("TVTA",dataFromComic.get(0));
+		Assert.assertEquals("OPTIN",dataFromComic.get(1));
+		Assert.assertEquals("ACT",dataFromComic.get(2));
+		Assert.assertEquals("Automation",dataFromComic.get(3));
+		Assert.assertEquals("Script",dataFromComic.get(4));
 	}
-	/*@DataProvider()
-	public Object[][] sendDataForCusAPI_Tvta_optout()
-	{
-		Object[][] obj=new Object[1][4];
-		obj[0][0]="TVTA";
-		obj[0][1]="OPTOUT";
-		obj[0][2]="Automation";
-		obj[0][3]="Script";
-		
-		return obj;
-		
-	}
-	@Test(dataProvider="sendDataForCusAPI_Tvta_optout",description="This Test Verifies the CUS call with TVTA-OPTIN")
-	public void VerifyCUS_With_Tvta_Optout(String consentType,String consentValue,String lastupdatedby,String tvconsentmessageid) throws JsonGenerationException, JsonMappingException, IOException, SQLException
-	{
-		Consents consents = new Consents();
-		consents.setConsentType(consentType);
-		consents.setConsentValue(consentValue);
-		consents.setLastUpdatedBy(lastupdatedby);
-		consents.setConsentMessage(tvconsentmessageid);
-		
-		httpput=new HttpPut();
-		//httpput.addHeader("Content-Type","application/json");
-		ObjectMapper objectmapper=new ObjectMapper();
-		//object to json file
-		objectmapper.writeValue(new File("C:/Users/vinay.singh/workspace/ApiAutomation/src/resources/consents.json"),consents);
-		
-		String userJsonstring=objectmapper.writeValueAsString(consents);
-		System.out.println(userJsonstring);
-		System.out.println(FinalURL);
-		httpresponse=httprequesthandler.SendRequest(FinalURL,userJsonstring);
-	  
-		int statusCode=httpresponse.getStatusLine().getStatusCode();
-		Assert.assertEquals(testbase.RESPONSE_STATUS_CODE_200, statusCode);
-		
-	}*/
 	
 public static void main(String args[]) throws SQLException, IOException
 {
 	
-	//testCusService ts=new testCusService();
+	testCusService ts=new testCusService();
 	//String asd=ts.createURLForCusHttpRequest();
 	//System.out.println(asd);
 	//ts.VerifyCUS_With_Tvta_Optin("TVTA", "OPTIN", "a", "s");
