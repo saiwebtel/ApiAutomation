@@ -143,7 +143,7 @@ public class testCusService
 	public void VerifyCRSAPI() throws JsonGenerationException, JsonMappingException, IOException, SQLException
 	{
 		httpget=new HttpGet();
-		httpresponse=httprequesthandler1.SendGetRequest(FinalURLForCRS);
+		httpresponse=httprequesthandler.SendGetRequest(FinalURLForCRS);
 		System.out.println("FINAL URL :::::::: "+FinalURLForCRS);
 		int statusCode=httpresponse.getStatusLine().getStatusCode();
 		Assert.assertEquals(testbase.RESPONSE_STATUS_CODE_200, statusCode);
