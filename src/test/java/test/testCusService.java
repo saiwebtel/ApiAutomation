@@ -139,17 +139,15 @@ public class testCusService
 		Assert.assertEquals("Script",dataFromComic.get(4));
 	}
 	// CRS API TEST
-	@Test(description="This Test Verifies the CRS API")
+	/*@Test(description="This Test Verifies the CRS API")
 	public void VerifyCRSAPI() throws JsonGenerationException, JsonMappingException, IOException, SQLException
 	{
 		httpget=new HttpGet();
-		
-		
-		httpresponse=httprequesthandler.SendGetRequest("http://10.67.178.48:8085/crs/consents?TVID=037769362");
+		httpresponse=httprequesthandler.SendGetRequest("FinalURLForCRS");
 		System.out.println("FINAL URL :::::::: "+FinalURLForCRS);
 		int statusCode=httpresponse.getStatusLine().getStatusCode();
 		Assert.assertEquals(testbase.RESPONSE_STATUS_CODE_200, statusCode);
-	}
+	}*/
 	
 public static void main(String args[]) throws SQLException, IOException
 {
